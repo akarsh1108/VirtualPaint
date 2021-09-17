@@ -47,7 +47,8 @@ def drawOnCanvas(myPoints,myColorValues):
     for point in myPoints:
         cv2.circle(imgResult,(point[0],point[1]),10,myColorValues[point[2]],cv2.FILLED)
 while True:
-    success,img=cap.read()
+    success,rot=cap.read()
+    img = cv2.flip(rot, 90)
     imgResult=img.copy()
     newPoints=findcolor(img,myColors,myColorsValues)
     if len(newPoints)!=0:
